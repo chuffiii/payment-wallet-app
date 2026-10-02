@@ -1,55 +1,58 @@
-# Turborepo Tailwind CSS starter
+# Payment Wallet App
 
-This Turborepo starter is maintained by the Turborepo core team.
+A Paytm-like digital wallet application built with Next.js, TypeScript, Prisma, and PostgreSQL.
 
-## Using this example
+## Features
 
-Run the following command:
+* User authentication
+* Wallet balance management
+* Add money through bank webhook
+* P2P money transfers
+* Transaction history
+* Responsive dashboard
 
-```sh
-npx create-turbo@latest -e with-tailwind
+## Tech Stack
+
+* Next.js
+* TypeScript
+* Prisma
+* PostgreSQL
+* NextAuth
+* Zustand
+* Tailwind CSS
+* Turborepo
+
+## Project Structure
+
+```text
+apps/
+└── bank_webhook_handler/
+└── user-app/
+
+
+packages/
+├── db/
+├── store/
+└── ui/
 ```
 
-## What's inside?
+## How It Works
 
-This Turborepo includes the following packages/apps:
+### Add Money
 
-### Apps and Packages
+Users can add money to their wallet through the bank payment flow. The bank sends a webhook after the payment is completed, and the application updates the transaction status and wallet balance.
 
-- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
-- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
-- `@repo/tailwind-config`: shared Tailwind CSS theme and PostCSS configuration
-- `@repo/eslint-config`: `eslint` flat configurations (includes `@next/eslint-plugin-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### P2P Transfer
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Users can send money to other users using their phone number. The transfer updates both users' balances inside a database transaction.
 
-### Building packages/ui
+## Screenshots
 
-This example is set up to produce compiled styles for `ui` components into the `dist` directory. The component `.tsx` files are consumed by the Next.js apps directly using `transpilePackages` in `next.config.ts`. This was chosen for several reasons:
+### Dashboard
 
-- Make sharing one theme from `packages/tailwind-config/shared-styles.css` to apps and packages as easy as possible.
-- Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
-- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for its classes via `@import "tailwindcss" prefix(ui);` in [packages/ui/src/styles.css](packages/ui/src/styles.css).
-- Maintain clear package export boundaries.
+![Dashboard](./screenshots/dashboard.png)
 
-Another option is to consume `packages/ui` directly from source without building. Tailwind CSS v4 automatically detects class names in your source files, but it does not scan other packages in `node_modules`. If you use this option, add [`@source` directives](https://tailwindcss.com/docs/functions-and-directives#source-directive) to the CSS entry point in your apps so Tailwind can find the class names used in the `ui` package:
+### Add Money
 
-```css
-@import "tailwindcss";
-@import "@repo/tailwind-config";
+![Add Money](./screenshots/transfer.png)
 
-@source "../../../packages/ui/src";
-```
-
-If you choose this strategy, you can remove the `tailwindcss` dependency and the `build:styles` script from the `ui` package.
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [Tailwind CSS](https://tailwindcss.com/) for styles
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
