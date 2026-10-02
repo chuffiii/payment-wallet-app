@@ -2,6 +2,10 @@
 
 A Paytm-like digital wallet application built with Next.js, TypeScript, Prisma, and PostgreSQL.
 
+## Live Demo
+
+👉 (https://payment-wallet-app-theta.vercel.app/)
+
 ## Features
 
 * User authentication
