@@ -1,0 +1,21 @@
+{
+  "name": "bank_webhook_handler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev":"tsx watch src/index.ts",
+    "build":"tsc",
+    "start":"node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@repo/db":"*",
+    "@types/express": "^5.0.6",
+    "express": "^5.2.1",
+    "tsx": "^4.23.15"
+  }
+}
